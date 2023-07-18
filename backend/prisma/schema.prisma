@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Post{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  body String 
+  postId Int? @unique
+  topic String?
+  createdAt DateTime @default(now())
+}
+
+model Counter{
+  id String @id @default(auto()) @map("_id") @db.ObjectId 
+  bookCount Int
+  userCount Int
+  identifier Int @unique
+}
+
+model Book{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  bookId Int @unique
+  author String? 
+  link String?
+  title String?
+  createdAt DateTime @default(now())
+  keywords String
+  description String?
+  public Boolean @default(true)
+}
+
+model User{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId Int?
+  username String @unique 
+  name String?
+  password String
+  bio String? 
+  dp String? 
+}
