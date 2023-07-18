@@ -1,6 +1,8 @@
 # Fly-dot-AI
 
 # Working Demo Link : 
+
+Please use Microsoft Edge or Brave in case Chrome warns danger :3
    
 https://flyai.netlify.app/chat    
 
